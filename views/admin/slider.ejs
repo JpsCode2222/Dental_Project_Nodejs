@@ -1,0 +1,55 @@
+<%-include('navbar.ejs')%>
+<form action="/admin/save_slider" method="post" enctype="multipart/form-data">
+  <div class="container bg-white">
+    <div class="row">
+      <div class="col-12">
+        <h3 class="text-primary fw-bold">Slider Image</h3>
+      </div>
+      <div class="col-4 mt-4">
+        Choose Slider Image *
+        <input type="file" required name="slider_image" class="form-control" />
+      </div>
+      <div class="col-4 mt-4">
+        Enter Slider Title
+        <input type="text" name="slider_title" class="form-control" />
+      </div>
+      <div class="col-4 mt-4">
+        Enter Slider Short Title
+        <input type="text" name="slider_short_title" class="form-control" />
+      </div>
+      <div class="col-12 mt-4 text-center">
+        <button class="btn btn-primary">Save Slider</button>
+      </div>
+      <div class="col-12 mt-5">
+        <table border="1"class="table table-border table-sm table-hover" width="100%">
+            <tr>
+              <th>Edit</th>
+              <th>SN</th>
+              <th>Slider Image</th>
+              <th>Slider Title</th>
+              <th>Slider Short Title</th>
+            </tr>
+            <% for(var i=0; i<slides.length; i++){%>
+                <tr>
+                    <td>
+                      <a href="/admin/edit_slider/<%=slides[i].slider_id%>">
+                        <button type="button" class="btn btn-primary btn-sm">Edit</button>
+                      </a>
+                      <a href="/admin/delete_slider/<%=slides[i].slider_id%>">
+                        <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                      </a>
+                    </td>
+                    <td><%=i+1%></td>
+                    <td>
+                        <img src="/img/<%=slides[i].slider_image%>" width="200px" alt="">
+                    </td>
+                    <td><%=slides[i].slider_title%></td>
+                    <td><%=slides[i].slider_short_title%></td>
+                </tr>
+            <%}%>
+          </table>
+      </div>
+    </div>
+  </div>
+</form>
+<%-include('footer.ejs')%>

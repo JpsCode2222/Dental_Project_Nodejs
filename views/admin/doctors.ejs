@@ -1,0 +1,95 @@
+<%- include('navbar.ejs')%>
+<form action="/admin/save_doctor" method="post" enctype="multipart/form-data">
+<div class="container-fluid p-5 bg-white">
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="text-primary">Add New Doctor</h3>
+    </div>
+    <div class="col-md-4 mt-3">
+      Doctor name
+      <input type="text" name="doctor_name" class="form-control" />
+    </div>
+    <div class="col-md-4 mt-3">
+      Doctor Mobile
+      <input type="text" name="doctor_mobile" class="form-control" />
+    </div>
+    <div class="col-md-4 mt-3">
+        Doctor Email
+        <input type="text" name="doctor_email" class="form-control" />
+      </div>
+      <div class="col-md-4 mt-3">
+        Specialist
+        <input type="text" name="Specialist" class="form-control" />
+      </div>
+    <div class="col-md-4 mt-3">
+      Service Of Doctor *
+     <select name="doctor_service_id" class="form-control" required>
+        <option value="_"></option>
+       <% for(var i=0;i<service_list.length;i++){%>
+        <option value="<%=service_list[i].service_id%>"><%=service_list[i].service_name%></option>
+    <%}%>
+     </select>
+    </div>
+    <div class="col-md-4 mt-3">
+        Doctor Image
+        <input type="file" name="doctor_img" class="form-control" required />
+      </div>
+    <div class="col-md-3 mt-3">
+        Twitter Link
+        <input type="url" name="twitter_link" class="form-control" />
+      </div>
+      <div class="col-md-3 mt-3">
+        Linkedin Link
+        <input type="url" name="linkedin_link" class="form-control" />
+      </div>
+      <div class="col-md-3 mt-3">
+        Facebook Link
+        <input type="url" name="facebook_link" class="form-control" />
+      </div>
+      <div class="col-md-3 mt-3">
+        Instagram Link
+        <input type="url" name="instagram_link" class="form-control" />
+      </div>
+    <div class="col-md-12 mt-3 text-center">
+      <button class="btn btn-primary">Save Doctor</button>
+    </div>
+ 
+</form>
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-sm table-bordered">
+                <tr>
+                    <th>Edit</th>
+                    <th>SN</th>
+                    <th>Doctor Name</th>
+                    <th>Doctor Mobile</th>
+                    <th>Doctor Email</th>
+                    <th>Specialist</th>
+                    <th>Service Name</th>
+                    <th>Doctor Image</th>
+                </tr>
+                    <%for(var i=0;i<doctor.length;i++){%>
+                     <tr>
+                        <td style="white-space: nowrap;">
+                          <a href="/admin/edit_doctor/<%=doctor[i].doctor_id%>"><button type="button" class="btn btn-sm btn-primary">Edit</button></a>
+                          <a href="/admin/delete_doctor/<%=doctor[i].doctor_id%>"><button type="button" class="btn btn-sm btn-danger">Delete</button></a>
+                        </td>
+                        <td><%=i+1%></td>
+                        <td><%=doctor[i].doctor_name%></td>
+                        <td><%=doctor[i].doctor_mobile%></td>
+                        <td><%=doctor[i].doctor_email%></td>
+                        <td><%=doctor[i].Specialist%></td>
+                        <td><%=doctor[i].service_name%></td>
+                        <td>
+                            <img src="/img/<%=doctor[i].doctor_img%>" width="200px" alt="">
+                        </td>
+                     </tr>   
+                    <%}%>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<%- include('footer.ejs')%>

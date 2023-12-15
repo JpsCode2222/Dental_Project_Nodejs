@@ -1,0 +1,84 @@
+<%- include('navbar.ejs') %>
+<form action="/admin/save_about_us" method="post" enctype="multipart/form-data">
+  <div class="container bg-white">
+    <div class="row">
+      <div class="col-12 mt-3">
+        <h3 class="fw-bold text-primary mt-2">About Us</h3>
+      </div>
+      <div class="col-6 mt-3">
+        Enter Title
+        <input
+          value="<%=data['title']%>"
+          type="text"
+          name="title"
+          class="form-control"
+        />
+      </div>
+      <div class="col-6 mt-3">
+        Enter heading
+        <input
+          value="<%=data['heading']%>"
+          type="text"
+          name="heading"
+          class="form-control"
+        />
+      </div>
+      <div class="col-6 mt-3">
+        Enter Description
+        <input
+          value="<%=data['description']%>"
+          type="text"
+          name="description"
+          class="form-control"
+        />
+      </div>
+      <div class="col-3 mt-3">
+        Select Image
+        <input type="file" name="about_img" class="form-control" />
+      </div>
+      <div class="col-3 mt-3">
+        <img src="/img/<%=data['about_img']%>" height="100px" />
+      </div>
+      <div class="col-3 mt-3">
+        Key Point 1
+        <input
+          value="<%=data['key_point1']%>"
+          type="text"
+          name="key_point1"
+          class="form-control"
+        />
+      </div>
+      <div class="col-3 mt-3">
+        Key Point 2
+        <input
+          value="<%=data['key_point2']%>"
+          type="text"
+          name="key_point2"
+          class="form-control"
+        />
+      </div>
+      <div class="col-3 mt-3">
+        Key Point 3
+        <input
+          value="<%=data['key_point3']%>"
+          type="text"
+          name="key_point3"
+          class="form-control"
+        />
+      </div>
+      <div class="col-3 mt-3">
+        Key Point 4
+        <input
+          value="<%=data['key_point4']%>"
+          type="text"
+          name="key_point4"
+          class="form-control"
+        />
+      </div>
+      <div class="col-12 mt-3 text-center">
+        <button class="btn btn-primary">Update Information</button>
+      </div>
+    </div>
+  </div>
+</form>
+<%- include('footer.ejs') %>

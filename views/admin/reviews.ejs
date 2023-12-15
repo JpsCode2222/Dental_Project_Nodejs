@@ -1,0 +1,57 @@
+<%- include('navbar.ejs') %>
+<form action="/admin/save_review" method="post" enctype="multipart/form-data">
+  <div class="container-fluid p-5 bg-white">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="text-primary">Add Reviews</h3>
+      </div>
+      <div class="col-md-4 mt-3">
+        Choose Image <sup style="color: red">*</sup>
+        <input type="file" required name="review_img" class="form-control" />
+      </div>
+      <div class="col-md-4 mt-3">
+        Enter Name <sup style="color: red">*</sup>
+        <input type="text" required name="review_name" class="form-control" />
+      </div>
+      <div class="col-md-4 mt-3">
+        Review Information <sup style="color: red">*</sup>
+        <textarea name="review_info" required class="form-control"></textarea>
+      </div>
+      <div class="col-md-12 text-center mt-3">
+        <button class="btn btn-primary">Save Review</button>
+      </div>
+      <div class="col-md-12 mt-3">
+        <table class="table table-sm table-hover table-striped">
+          <tr>
+            <th>Edit</th>
+            <th>SN</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Review</th>
+          </tr>
+          <% for(var i=0; i<reviews.length;i++){%>
+            <tr>
+              <td style="white-space: nowrap;">
+                <a href="/admin/edit_review/<%=reviews[i].review_id%>"><button type="button" class="btn btn-sm btn-primary">Edit</button></a>
+                <a href="/admin/delete_review/<%=reviews[i].review_id%>"><button type="button" class="btn btn-sm btn-danger">Delete</button></a>
+              </td>
+              <td>
+                <%=i+1%>
+              </td>
+              <td>
+                <img src="/img/<%=reviews[i].review_img%>" width="150px" alt="">
+              </td>   
+              <td>
+                <%=reviews[i].review_name%>
+              </td>
+              <td>
+                <%=reviews[i].review_info%>
+              </td>
+            </tr>
+          <%}%>
+        </table>
+      </div>
+    </div>
+  </div>
+</form>
+<%- include('footer.ejs') %>

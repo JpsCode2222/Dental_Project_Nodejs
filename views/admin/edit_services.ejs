@@ -1,0 +1,80 @@
+<%-include('navbar.ejs')%>
+<form
+  action="/admin/update_service"
+  method="post"
+  enctype="multipart/form-data"
+>
+  <div class="container-fluid bg-white p-3">
+    <div class="row">
+      <div class="col-md-12">
+        <h3>Manage Services</h3>
+        <input
+          type="hidden"
+          name="service_id"
+          value="<%=service.service_id%>"
+        />
+      </div>
+      <div class="col-md-3 mt-3">
+        Service Name
+        <input
+          value="<%=service.service_name%>"
+          type="text"
+          name="service_name"
+          required
+          class="form-control"
+        />
+      </div>
+      <div class="col-md-4 mt-3">
+        Service Image
+        <input type="file" name="service_img" required class="form-control" />
+      </div>
+      <div class="col-md-2">
+        <img src="/img/<%=service.service_img%>" width="100%" alt="" />
+      </div>
+      <div class="col-md-3 mt-3">
+        Service Price
+        <input
+          value="<%=service.service_price%>"
+          type="number"
+          name="service_price"
+          required
+          class="form-control"
+        />
+      </div>
+      <div class="col-md-4 mt-3">
+        Key Point 1
+        <input
+          value="<%=service.key_point1%>"
+          type="text"
+          name="key_point1"
+          required
+          class="form-control"
+        />
+      </div>
+      <div class="col-md-4 mt-3">
+        Key Point 2
+        <input
+          value="<%=service.key_point2%>"
+          type="text"
+          name="key_point2"
+          required
+          class="form-control"
+        />
+      </div>
+      <div class="col-md-4 mt-3">
+        Key Point 3
+        <input
+          value="<%=service.key_point3%>"
+          type="text"
+          name="key_point3"
+          required
+          class="form-control"
+        />
+      </div>
+      <div class="col-md-12 mt-4 text-center">
+        <button class="btn btn-primary">Update Service</button>
+      </div>
+    </div>
+  </div>
+</form>
+<%-include('footer.ejs')%>

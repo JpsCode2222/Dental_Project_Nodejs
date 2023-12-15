@@ -1,0 +1,40 @@
+<%- include('navbar') %>
+
+<div class="container-fluid bg-white p-3">
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="fw-bold mb-3 text-primary">Today's Appointment</h3>
+      <table class="table table-striped table-hover">
+        <tr>
+          <th></th>
+          <th>SN</th>
+          <th>Patient Name</th>
+          <th>Patient Mobile</th>
+          <th>Service</th>
+          <th>Doctor</th>
+          <th>Time</th>
+          <th>Status</th>
+        </tr>
+        <%for(var i=0;i<appointments.length;i++){%>
+          <tr>
+            <td>
+              <%if(appointments[i].status === 'Pending'){%>
+              <a href="/admin/change_appointment_status/<%=appointments[i].appointment_id%>/Complete"><button class="btn btn-sm btn-success">Complete</button></a>
+              <a href="/admin/change_appointment_status/<%=appointments[i].appointment_id%>/Cancle"><button class="btn btn-sm btn-danger">Cancle</button></a>
+              <%}%>
+            </td>
+            <td><%=i+1%></td>
+            <td><%=appointments[i].patient_name%></td>
+            <td><%=appointments[i].patient_mobile%></td>
+            <td><%=appointments[i].service_name%></td>
+            <td><%=appointments[i].doctor_name%></td>
+            <td><%=appointments[i].appointment_time%></td>
+            <td><%=appointments[i].status%></td>
+          </tr>
+         <%}%> 
+      </table>
+    </div>
+  </div>
+</div>
+
+<%- include('footer') %>
